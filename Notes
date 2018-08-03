@@ -10,4 +10,7 @@ Project Creation:
 - make directory and cd to it
 - npm init
 - npm i @angular/cli@1.7.4 --save-dev
+- ng new devLeaderBoard
+- npm install
+- ng serve --open
 -
