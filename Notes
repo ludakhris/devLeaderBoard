@@ -1,0 +1,13 @@
+Random Notes:
+
+Project Creation:
+- As root:
+	npm install -g -f @angular/cli@1
+  	ng --help
+- If you need to uninstall another version:
+	npm uninstall -g angular-cli
+  	npm cache verify
+- make directory and cd to it
+- npm init
+- npm i @angular/cli@1.7.4 --save-dev
+-
