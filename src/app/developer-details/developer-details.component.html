@@ -1,0 +1,19 @@
+<div *ngIf="dev">
+    <h2>{{ dev.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{dev.id}}</div>
+    <div><span>sid: </span>{{dev.sid}}</div>
+    <div><span>email: </span>{{dev.email}}</div>
+    <div><span>pki: </span>{{dev.pkiDn}}</div>
+    <div><span>name: </span>{{dev.name}}</div>
+    <div><span>last activity: </span>{{dev.lastActivity | date: 'fullTime'}}</div>
+    <div>
+    <label>name:
+        <input [(ngModel)]="dev.name" placeholder="name">
+        <input [(ngModel)]="dev.sid" placeholder="sid">
+        <input [(ngModel)]="dev.email" placeholder="email">
+        <input [(ngModel)]="dev.pkiDn" placeholder="pkiDn" onkeypress="this.style.width = ((this.value.length + 1) * 12) + 'px';">
+    </label>
+    </div>
+    <button (click)="goBack()">go back...</button>
+    <button (click)="save()">save</button>
+</div>

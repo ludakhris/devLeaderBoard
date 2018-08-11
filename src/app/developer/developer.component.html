@@ -1,0 +1,16 @@
+<h2>All Developers:</h2>
+<ul class="developers">
+  <li *ngFor="let developer of developers">
+    <a routerLink="/detail/{{developer.id}}">
+      <span class="badge">{{developer.id}}</span> {{developer.name}}
+    </a>
+    <button class="delete" title="delete dev" (click)="delete(developer)">x</button>
+  </li>
+</ul>
+
+<div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="addNew();''">
+    Add New...
+  </button>
+</div>

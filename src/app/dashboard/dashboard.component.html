@@ -1,0 +1,10 @@
+<h3>Top Developers</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let dev of developers" class="col-1-4" routerLink="/detail/{{dev.id}}">
+    <div class="module hero">
+      <h4>{{dev.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-dev-search></app-dev-search>
