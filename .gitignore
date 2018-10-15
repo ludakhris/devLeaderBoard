@@ -5,6 +5,8 @@
 /dist-server
 /tmp
 /out-tsc
+*/target/*
+#pdfapp/target/*
 
 # dependencies
 /node_modules
