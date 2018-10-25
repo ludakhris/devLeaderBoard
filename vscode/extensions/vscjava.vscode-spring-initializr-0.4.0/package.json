@@ -1,0 +1,150 @@
+{
+	"name": "vscode-spring-initializr",
+	"displayName": "Spring Initializr Java Support",
+	"description": "A lightweight extension based on Spring Initializr to generate quickstart Spring Boot Java projects.",
+	"version": "0.4.0",
+	"icon": "resources/logo.png",
+	"publisher": "vscjava",
+	"aiKey": "c6b120cb-a893-4187-8db5-0e28734c3910",
+	"homepage": "https://github.com/Microsoft/vscode-spring-initializr/blob/v0.4.0/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-spring-initializr.git"
+	},
+	"engines": {
+		"vscode": "^1.19.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:spring.initializr.maven-project",
+		"onCommand:spring.initializr.gradle-project",
+		"onCommand:spring.initializr.editStarters",
+		"onCommand:spring.initializr.generate"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "spring.initializr.generate",
+				"title": "Generate a Spring Boot Project",
+				"category": "Spring Initializr"
+			},
+			{
+				"command": "spring.initializr.maven-project",
+				"title": "Generate a Maven Project",
+				"category": "Spring Initializr"
+			},
+			{
+				"command": "spring.initializr.gradle-project",
+				"title": "Generate a Gradle Project",
+				"category": "Spring Initializr"
+			},
+			{
+				"command": "spring.initializr.editStarters",
+				"title": "Edit starters",
+				"category": "Spring Initializr"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "spring.initializr.editStarters",
+					"when": "never"
+				},
+				{
+					"command": "spring.initializr.generate",
+					"when": "never"
+				}
+			],
+			"editor/context": [
+				{
+					"when": "resourceFilename == pom.xml",
+					"command": "spring.initializr.editStarters",
+					"group": "SpringInitializr"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Spring Initializr",
+			"properties": {
+				"spring.initializr.serviceUrl": {
+					"default": "https://start.spring.io/",
+					"type": "string",
+					"pattern": "https?://.*",
+					"scope": "window",
+					"description": "Spring Initializr Service URL."
+				},
+				"spring.initializr.defaultLanguage": {
+					"default": "",
+					"type": "string",
+					"enum": [
+						"",
+						"Java",
+						"Kotlin",
+						"Groovy"
+					],
+					"scope": "window",
+					"description": "Default language."
+				},
+				"spring.initializr.defaultGroupId": {
+					"default": "com.example",
+					"type": "string",
+					"scope": "window",
+					"description": "Default value for Group Id."
+				},
+				"spring.initializr.defaultArtifactId": {
+					"default": "demo",
+					"type": "string",
+					"scope": "window",
+					"description": "Default value for Artifact Id."
+				},
+				"spring.initializr.defaultPackaging": {
+					"default": "JAR",
+					"type": "string",
+					"enum": [
+						"",
+						"JAR",
+						"WAR"
+					],
+					"scope": "window",
+					"description": "Default packaging."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"tslint": "tslint -t verbose src/*.ts",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^5.0.0",
+		"@types/lodash": "^4.14.107",
+		"@types/md5": "^2.1.32",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.43",
+		"@types/xml2js": "^0.4.2",
+		"tslint": "^5.8.0",
+		"tslint-microsoft-contrib": "^5.0.1",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.21"
+	},
+	"dependencies": {
+		"fs-extra": "^5.0.0",
+		"lodash": "^4.17.5",
+		"md5": "^2.2.1",
+		"unzip-stream": "^0.3.0",
+		"vscode-extension-telemetry-wrapper": "^0.3.1",
+		"xml2js": "^0.4.19"
+	},
+	"__metadata": {
+		"id": "a205ad34-542b-4c67-a9ed-f645103ad9c0",
+		"publisherId": "bae08b87-578e-41ec-ab1c-0b036e7add88",
+		"publisherDisplayName": "Microsoft"
+	}
+}

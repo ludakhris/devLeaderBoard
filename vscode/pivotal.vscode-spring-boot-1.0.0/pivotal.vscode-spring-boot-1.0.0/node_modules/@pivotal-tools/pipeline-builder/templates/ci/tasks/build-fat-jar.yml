@@ -1,0 +1,9 @@
+platform: linux
+run:
+  path: git/ci/tasks/build-fat-jar.sh
+caches:
+- path: .m2
+inputs:
+- name: git
+outputs:
+- name: out

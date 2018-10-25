@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+base_dir=`pwd`
+app_dir=${base_dir}/git
+out_dir=${base_dir}/out
+
+echo "PWD=${base_dir}"
+
+mkdir -p ${base_dir}/.m2
+
+ln -s ${base_dir}/.m2 /root/.m2
+echo "=== ~/.m2/ contents ===="
+ls -la /root/.m2/
+echo "========================"
+
+cd $app_dir
+./mvnw clean package
+
+cp -a ${base_dir}/git/ci/docker/* ${out_dir}
+cp $app_dir/target/*.jar ${out_dir}/fatjar.jar

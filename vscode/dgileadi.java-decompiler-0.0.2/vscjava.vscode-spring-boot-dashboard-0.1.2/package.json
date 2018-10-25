@@ -1,0 +1,154 @@
+{
+	"name": "vscode-spring-boot-dashboard",
+	"displayName": "Spring Boot Dashboard",
+	"description": "Spring Boot Dashboard for VS Code",
+	"version": "0.1.2",
+	"icon": "resources/logo.png",
+	"publisher": "vscjava",
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"preview": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-spring-boot-dashboard.git"
+	},
+	"engines": {
+		"vscode": "^1.24.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:spring-boot-dashboard.refresh",
+		"onView:spring-boot-dashboard"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"views": {
+			"explorer": [
+				{
+					"id": "spring-boot-dashboard",
+					"name": "Spring-Boot Dashboard"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "spring-boot-dashboard.refresh",
+				"title": "Refresh",
+				"category": "Spring-Boot Dashboard",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "spring-boot-dashboard.localapp.start",
+				"title": "Start",
+				"category": "Spring-Boot Dashboard"
+			},
+			{
+				"command": "spring-boot-dashboard.localapp.stop",
+				"title": "Stop",
+				"category": "Spring-Boot Dashboard"
+			},
+			{
+				"command": "spring-boot-dashboard.localapp.open",
+				"title": "Open In Browser",
+				"category": "Spring-Boot Dashboard"
+			},
+			{
+				"command": "spring-boot-dashboard.localapp.debug",
+				"title": "Debug",
+				"category": "Spring-Boot Dashboard"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "spring-boot-dashboard.localapp.start",
+					"when": "never"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.stop",
+					"when": "never"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.open",
+					"when": "never"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.debug",
+					"when": "never"
+				},
+				{
+					"command": "spring-boot-dashboard.refresh",
+					"when": "never"
+				}
+			],
+			"view/title": [
+				{
+					"command": "spring-boot-dashboard.refresh",
+					"when": "view == spring-boot-dashboard",
+					"group": "navigation@5"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "spring-boot-dashboard.localapp.start",
+					"when": "view == spring-boot-dashboard && viewItem == BootApp_inactive",
+					"group": "action@5"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.debug",
+					"when": "view == spring-boot-dashboard && viewItem == BootApp_inactive",
+					"group": "action@6"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.stop",
+					"when": "view == spring-boot-dashboard && viewItem == BootApp_running",
+					"group": "action@8"
+				},
+				{
+					"command": "spring-boot-dashboard.localapp.open",
+					"when": "view == spring-boot-dashboard && viewItem == BootApp_running",
+					"group": "action@a"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install && sh -c scripts/build-java-extension.sh",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test",
+		"tslint": "tslint -t verbose src/**/*.ts"
+	},
+	"devDependencies": {
+		"@types/get-port": "^4.0.0",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.43",
+		"@types/opn": "^5.1.0",
+		"@types/uuid": "^3.4.3",
+		"tslint": "^5.11.0",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.21"
+	},
+	"extensionDependencies": [
+		"Pivotal.vscode-spring-boot",
+		"redhat.java",
+		"vscjava.vscode-java-debug"
+	],
+	"dependencies": {
+		"@pivotal-tools/jvm-launch-utils": "0.0.11",
+		"get-port": "^4.0.0",
+		"opn": "^5.3.0",
+		"uuid": "^3.3.2",
+		"vscode-extension-telemetry-wrapper": "^0.3.1"
+	},
+	"__metadata": {
+		"id": "27fc0e8e-1341-4f52-9219-4e0f81590937",
+		"publisherId": "bae08b87-578e-41ec-ab1c-0b036e7add88",
+		"publisherDisplayName": "Microsoft"
+	}
+}

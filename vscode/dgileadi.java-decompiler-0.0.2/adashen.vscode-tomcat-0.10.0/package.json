@@ -1,0 +1,394 @@
+{
+	"name": "vscode-tomcat",
+	"displayName": "Tomcat for Java",
+	"description": "%extension.description%",
+	"version": "0.10.0",
+	"publisher": "adashen",
+	"aiKey": "2c4085f1-6aa9-4d1c-ae45-bbda3a87a2a0",
+	"icon": "resources/icon.png",
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/adashen/vscode-tomcat"
+	},
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"keywords": [
+		"Java",
+		"Tomcat"
+	],
+	"homepage": "https://github.com/adashen/vscode-tomcat/blob/master/README.md",
+	"activationEvents": [
+		"onCommand:tomcat.tree.refresh",
+		"onCommand:tomcat.config.open",
+		"onCommand:tomcat.server.add",
+		"onCommand:tomcat.server.stop",
+		"onCommand:tomcat.server.delete",
+		"onCommand:tomcat.server.start",
+		"onCommand:tomcat.server.restart",
+		"onCommand:tomcat.server.rename",
+		"onCommand:tomcat.server.browse",
+		"onCommand:tomcat.server.debug",
+		"onCommand:tomcat.war.run",
+		"onCommand:tomcat.war.debug",
+		"onCommand:tomcat.war.browse",
+		"onCommand:tomcat.war.reveal",
+		"onCommand:tomcat.war.delete",
+		"onCommand:tomcat.package",
+		"onCommand:tomcat.webapp.run",
+		"onCommand:tomcat.webapp.debug",
+		"onView:tomcatServerExplorer"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "tomcat.tree.refresh",
+				"title": "Refresh Tomcat Server Tree",
+				"category": "Tomcat",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "tomcat.server.add",
+				"title": "Add Tomcat Server",
+				"category": "Tomcat",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "tomcat.war.run",
+				"title": "Run on Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.war.browse",
+				"title": "Open in Browser",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.stop",
+				"title": "Stop Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.war.debug",
+				"title": "Debug on Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.delete",
+				"title": "Delete Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.config.open",
+				"title": "Open Server Configuration",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.start",
+				"title": "Start Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.restart",
+				"title": "Restart Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.rename",
+				"title": "Rename Tomcat Server",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.browse",
+				"title": "Open in Browser",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.debug",
+				"title": "Debug War Package"
+			},
+			{
+				"command": "tomcat.package",
+				"title": "Generate War Package from Current Folder",
+				"category": "Tomcat"
+			},
+			{
+				"command": "tomcat.server.customizejvmoptions",
+				"title": "Customize JVM Options"
+			},
+			{
+				"command": "tomcat.server.delete.context",
+				"title": "Delete"
+			},
+			{
+				"command": "tomcat.server.start.context",
+				"title": "Start"
+			},
+			{
+				"command": "tomcat.server.restart.context",
+				"title": "Restart"
+			},
+			{
+				"command": "tomcat.server.rename.context",
+				"title": "Rename"
+			},
+			{
+				"command": "tomcat.server.stop.context",
+				"title": "Stop"
+			},
+			{
+				"command": "tomcat.war.browse",
+				"title": "Open in Browser"
+			},
+			{
+				"command": "tomcat.war.delete",
+				"title": "Delete"
+			},
+			{
+				"command": "tomcat.war.reveal",
+				"title": "Reveal in Explorer"
+			},
+			{
+				"command": "tomcat.webapp.run",
+				"title": "Run on Tomcat Server"
+			},
+			{
+				"command": "tomcat.webapp.debug",
+				"title": "Debug on Tomcat Server"
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "tomcatServerExplorer",
+					"name": "Tomcat Servers"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "tomcat.tree.refresh",
+					"when": "view == tomcatServerExplorer",
+					"group": "navigation@0"
+				},
+				{
+					"command": "tomcat.server.add",
+					"when": "view == tomcatServerExplorer",
+					"group": "navigation@1"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "tomcat.server.browse",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.tree.refresh",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.config.open",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.war.browse",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.start.context",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.restart.context",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.rename.context",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.delete.context",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.stop.context",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.war.delete",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.customizejvmoptions",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.war.reveal",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.server.debug",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.webapp.run",
+					"when": "never"
+				},
+				{
+					"command": "tomcat.webapp.debug",
+					"when": "never"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "tomcat.war.run",
+					"when": "explorerResourceIsFolder == false && resourceExtname == .war"
+				},
+				{
+					"command": "tomcat.war.debug",
+					"when": "explorerResourceIsFolder == false && resourceExtname == .war"
+				},
+				{
+					"command": "tomcat.webapp.run",
+					"when": "explorerResourceIsFolder == true"
+				},
+				{
+					"command": "tomcat.webapp.debug",
+					"when": "explorerResourceIsFolder == true"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "tomcat.server.start.context",
+					"when": "view == tomcatServerExplorer && viewItem == idleserver",
+					"group": "tomcat@0"
+				},
+				{
+					"command": "tomcat.server.stop.context",
+					"when": "view == tomcatServerExplorer && viewItem == runningserver",
+					"group": "tomcat@1"
+				},
+				{
+					"command": "tomcat.server.restart.context",
+					"when": "view == tomcatServerExplorer && viewItem == runningserver",
+					"group": "tomcat@2"
+				},
+				{
+					"command": "tomcat.server.rename.context",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@3"
+				},
+				{
+					"command": "tomcat.server.browse",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@4"
+				},
+				{
+					"command": "tomcat.config.open",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@5"
+				},
+				{
+					"command": "tomcat.server.customizejvmoptions",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@6"
+				},
+				{
+					"command": "tomcat.server.debug",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@7"
+				},
+				{
+					"command": "tomcat.server.delete.context",
+					"when": "view == tomcatServerExplorer && viewItem && viewItem != war",
+					"group": "tomcat@8"
+				},
+				{
+					"command": "tomcat.war.browse",
+					"when": "view == tomcatServerExplorer && viewItem == war",
+					"group": "war@0"
+				},
+				{
+					"command": "tomcat.server.add",
+					"when": "view == tomcatServerExplorer && !viewItem"
+				},
+				{
+					"command": "tomcat.war.reveal",
+					"when": "view == tomcatServerExplorer && viewItem == war",
+					"group": "war@1"
+				},
+				{
+					"command": "tomcat.war.delete",
+					"when": "view == tomcatServerExplorer && viewItem == war",
+					"group": "war@2"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "Tomcat Configuration",
+				"properties": {
+					"tomcat.workspace": {
+						"type": "string",
+						"default": "",
+						"description": "Tomcat Servers workspace."
+					},
+					"tomcat.restart_when_http(s)_port_change": {
+						"type": "boolean",
+						"default": true,
+						"description": "Restart Tomcat Server or not when http(s) port changes"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test",
+		"tslint": "tslint -t verbose src/**/*.ts"
+	},
+	"devDependencies": {
+		"@types/chokidar": "^1.7.5",
+		"@types/fs-extra": "^4.0.8",
+		"@types/mocha": "^2.2.48",
+		"@types/node": "7.0.43",
+		"@types/opn": "^5.1.0",
+		"@types/xml2js": "^0.4.2",
+		"mocha": "^2.3.3",
+		"tslint": "^5.10.0",
+		"tslint-microsoft-contrib": "5.0.1",
+		"typescript": "^2.8.3",
+		"vscode": "^1.1.18"
+	},
+	"dependencies": {
+		"chokidar": "^1.7.0",
+		"fs-extra": "^4.0.2",
+		"lodash": "^4.17.5",
+		"opn": "^5.1.0 ",
+		"portfinder": "^1.0.13",
+		"readline": "^1.3.0",
+		"vscode-extension-telemetry-wrapper": "^0.2.0",
+		"vscode-nls": "^2.0.2",
+		"xml2js": "^0.4.19"
+	},
+	"__metadata": {
+		"id": "3d701035-42c3-4849-a263-3022ff1b0197",
+		"publisherId": "c768c7a4-438e-489c-8c43-0e3fcba93f9d",
+		"publisherDisplayName": "Wei Shen"
+	}
+}
